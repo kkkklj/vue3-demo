@@ -15,3 +15,5 @@ Vue.prototype.$http = () => {}
 const app = createApp({})
 app.config.globalProperties.$http = () => {}
 ```
+
+组件的传参是按值传递的。
