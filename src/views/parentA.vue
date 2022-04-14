@@ -1,5 +1,5 @@
 <script setup>
-import { ref,onMounted } from 'vue'
+import { ref,onMounted,reactive } from 'vue'
 import {useRouter} from 'vue-router'
 import comRef from '../components/componentRef.vue'
 import empty from '../components/empty.vue'
@@ -10,11 +10,13 @@ const childrenRef = ref(null);
 //必须在setup中使用，函数里也不行
 const router = useRouter();
 
+const reactiveVal = reactive(1)
 
 onMounted(() => {
-  console.log('child')
-  console.log(childrenRef);
-  console.log(childrenRef.value);
+  console.log('child\n',childrenRef,'\n',childrenRef.value);
+  console.log('reactive',reactiveVal,'\n',reactiveVal.value)
+  // console.log(childrenRef);
+  // console.log(childrenRef.value);
 })
 
 let count = ref(3);//响应式
@@ -31,9 +33,7 @@ function testExpose() {
   //子组件expose出来的变量/引用，必须要在mounted之后才能拿到
   console.log('-----------------------expose-----------------------');
   let {exposeFunc,exposeState,exposeVal,exposeObj} = childrenRef.value;
-  console.log(exposeState)//被结构出来的只是个副本
-  console.log(exposeVal)
-  console.log(exposeObj)
+  console.log(exposeState,'\n',exposeVal,'\n',exposeObj)//被结构出来的只是个副本
   exposeFunc();
   //父组件可以直接修改子组件的状态
   childrenRef.value.exposeState = 'state change';
@@ -54,8 +54,8 @@ function toPageB() {
 
 <template>
   <h2>父组件状态</h2>
-  <button type="button" @click="count++">count is: {{ count }}，click ++</button>
-  <button @click="childPropObj.parentVal+=' add'">parent obj val is: {{childPropObj.parentVal}}</button>
+  <el-button type="success" @click="count++">count is: {{ count }}，click ++</el-button>
+  <el-button type="warning" @click="childPropObj.parentVal+=' add'">parent obj val is: {{childPropObj.parentVal}}</el-button>
   <h2>组件传参</h2>
   <comRef :propVal="count" @emitVal="comRefEmit" :propObj="childPropObj" ref="childrenRef"></comRef>
 

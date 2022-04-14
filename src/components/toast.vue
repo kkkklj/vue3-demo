@@ -1,10 +1,13 @@
-<script lang="ts">
+<script setup>
 //传送
-import { ref,defineExpose } from 'vue';
+import { ref } from 'vue';
 const toastShow = ref(false);
 const toggleToast = ({show,val = 'default val'}) => {
   toastShow.value = val;
   toastShow.value = show;
+  setTimeout(() => {
+    toastShow.value = false;
+  }, 1500);
 }
 defineExpose({
   toggleToast
@@ -12,7 +15,7 @@ defineExpose({
 </script>
 <template>
 <teleport to="body">
-  <div className="toast-wrap" v-show="toastShow">
+  <div class="toast-wrap" v-show="toastShow">
     toast
   </div>
 </teleport>

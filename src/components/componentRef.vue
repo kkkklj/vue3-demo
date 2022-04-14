@@ -1,6 +1,6 @@
 <script setup>
 //emit nextTick expose
-import { nextTick,ref,getCurrentInstance,defineExpose } from 'vue';
+import { nextTick,ref,getCurrentInstance } from 'vue';
 
 const propsRef = defineProps({
   propVal: Number,

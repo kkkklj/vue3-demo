@@ -5,6 +5,7 @@ import {
 
 import parentA from '../views/parentA.vue'
 import parentB from '../views/parentB.vue'
+import login from '../views/login.vue'
 
 const routes = [
   {
@@ -15,6 +16,11 @@ const routes = [
     path: '/b',
     name: 'parentB',
     component:parentB
+  },
+  {
+    path: '/login',
+    name: 'lgoin',
+    component:login
   }
 ]
 const router = createRouter({

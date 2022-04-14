@@ -1,6 +1,6 @@
 <script setup>
 //参数
-import { useRouter } from 'vue-router'
+import { useRouter,useRoute } from 'vue-router'
 import { useStore } from 'vuex';
 const store = useStore();
 
@@ -9,7 +9,8 @@ const router = useRouter(),
   query = curRoute.value.query,
   params = curRoute.value.params;
 
-console.log('rouetr query->', query,'\nrouetr params->',params)
-console.log('store count-->',store.state.count)
+  const route = useRoute();
+console.log('rouetr query->', query,'\nrouetr params->',params,'\nroute',route.query)
+console.log('store count-->',store.state)
 </script>
 <template>b</template>
