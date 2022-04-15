@@ -28,7 +28,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'https:xxx.xxx.com/xxx/',
+        target: 'https://baike.pcbaby.com.cn/',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '')
       }

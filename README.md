@@ -30,3 +30,20 @@ const refVal = ref(1);
 const reactiveVal = reactive(1);
 // reactiveVal === 1;
 ```
+
+```js
+//反向代理,vite.config.js
+server: {
+  open: true,
+  proxy: {
+    '/api': {
+      target: 'https://baike.pcbaby.com.cn/',
+      changeOrigin: true,
+      rewrite: path => path.replace(/^\/api/, '')
+    }
+  }
+}
+
+```
+
+- 第三方组件库，根据实际使用组件库导入，这里用的是element-plus
